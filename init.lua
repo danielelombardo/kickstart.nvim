@@ -110,7 +110,7 @@ do
   vim.o.number = true
   -- You can also add relative line numbers, to help with jumping.
   --  Experiment for yourself to see if you like it!
-  -- vim.o.relativenumber = true
+  vim.o.relativenumber = true
 
   -- Enable mouse mode, can be useful for resizing splits for example!
   vim.o.mouse = 'a'
@@ -126,6 +126,9 @@ do
 
   -- Enable break indent
   vim.o.breakindent = true
+
+  -- line wrap
+  vim.opt.wrap = false
 
   -- Enable undo/redo changes even after closing and reopening a file
   vim.o.undofile = true
@@ -428,7 +431,7 @@ do
   -- Add/delete/replace surroundings (brackets, quotes, etc.)
   --
   -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-  -- - sd'   - [S]urround [D]elete [']quotes
+
   -- - sr)'  - [S]urround [R]eplace [)] [']
   require('mini.surround').setup()
 
@@ -443,7 +446,7 @@ do
   -- default behavior. For example, here we set the section for
   -- cursor location to LINE:COLUMN
   ---@diagnostic disable-next-line: duplicate-set-field
-  statusline.section_location = function() return '%2l:%-2v' end
+  statusline.section_location = function() return '%2l / %2L : %-2v' end
 
   -- ... and there is more!
   --  Check out: https://github.com/nvim-mini/mini.nvim
